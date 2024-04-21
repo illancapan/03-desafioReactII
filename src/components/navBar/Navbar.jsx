@@ -1,7 +1,11 @@
-const Navbar = () => {
+import { NavLink } from 'react-router-dom'
+// import { BrowserRouter, Route, Routes  } from "react-router-dom";
+
+
+const NavBar = () => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg text-bg-secondary ">
+      <nav className="navbar navbar-expand-lg text-bg-primary ">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
             <img className="w-25" src="https://seeklogo.com/images/P/pokeball-logo-DC23868CA1-seeklogo.com.png" alt="" />
@@ -17,17 +21,19 @@ const Navbar = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <div className="collapse navbar-collapse justify-content-end " id="navbarNav">
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <a className="nav-link" href="#">
+              <li className="nav-item px-3">
+                <NavLink className={({isActive}) =>(isActive ? "active text-danger text-decoration-none" : "text-white text-decoration-none") } 
+                to="/" >
                   Home
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+              <NavLink className={({isActive}) =>(isActive ? "active text-danger text-decoration-none" : "text-white text-decoration-none") } 
+                to="/pokemon" >
                   Pokemones
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -36,4 +42,4 @@ const Navbar = () => {
     </>
   );
 };
-export default Navbar;
+export default NavBar;
