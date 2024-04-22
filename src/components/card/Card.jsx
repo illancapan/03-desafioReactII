@@ -1,31 +1,32 @@
-const Card = () => {
+const Card = ({ pokemon }) => {
+  console.log('Datos del pokmon:', pokemon);
+
+  if (!pokemon || !pokemon.stats || !pokemon.type) {
+    return <div>Error: No se ha seleccionado un pokemon</div>;
+  }
+
   return (
-    <>
-      <h1>Card</h1>
-      <div className="card w-25">
-        <img src="..." className="card-img-top" alt="..." />
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the cards content.
-          </p>
-        </div>
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item">An item</li>
-          <li className="list-group-item">A second item</li>
-          <li className="list-group-item">A third item</li>
+    <div className="card">
+      <div className="card-body">
+        <h3>Nombre: {pokemon.name}</h3>
+        <img src={pokemon.img} alt={pokemon.name} />
+        <h4>Stats:</h4>
+        <ul>
+          {pokemon.stats.map((stat, index) => (
+            <li key={index}>
+              {stat.stat.name}: {stat.base_stat}
+            </li>
+          ))}
         </ul>
-        <div className="card-body">
-          <a href="#" className="card-link">
-            Card link
-          </a>
-          <a href="#" className="card-link">
-            Another link
-          </a>
-        </div>
+        <h4>Tipo:</h4>
+        <ul>
+          {pokemon.type.map((type, index) => (
+            <li key={index}>{type.type.name}</li>
+          ))}
+        </ul>
       </div>
-    </>
+    </div>
   );
 };
+
 export default Card;
